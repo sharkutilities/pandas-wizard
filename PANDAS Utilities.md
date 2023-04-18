@@ -13,7 +13,7 @@
 The code is publically available at [**GitHub gists**](https://gist.github.com/ZenithClown) which is a simple platform for sharing *code snippets* with the community. To use the code, simply clone the code like:
 
 ```shell
-git clone https://gist.github.com/ZenithClown/.git pandas_
+git clone https://gist.github.com/ZenithClown/e4a0183d9124b3b78cce5a5dc8607323.git pandas_
 export PYTHONPATH="${PYTHONPATH}:pandas_"
 ```
 
