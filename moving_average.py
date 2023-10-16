@@ -1,3 +1,6 @@
+import warnings
+import numpy as np
+
 class MovingAverage:
     """
     A Base Method for Moving Average based Forecasting Model
