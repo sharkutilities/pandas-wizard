@@ -40,7 +40,7 @@ class MovingAverage:
         series_ = self.series # make a copy of the original iterable
         forecast = [] # append the forecasted values to the list to return
         
-        factors = [factor / i for i in range(1, self.n_forecast + 1)]
+        factors = [factor / (2 ** i) for i in range(self.n_forecast)]
         
         for _ in range(self.n_forecast):
             _iter_ma = (series_ * factors).sum() # current iteration moving average
