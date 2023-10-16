@@ -20,12 +20,30 @@ class MovingAverage:
         self.series = self._check_series(series) # ? removes the values with warning
         
         
-    def simple_ma(self) -> np.ndarray:
+    def simple(self) -> np.ndarray:
         series_ = self.series # make a copy of the original iterable
         forecast = [] # append the forecasted values to the list to return
         
         for _ in range(self.n_forecast):
             _iter_ma = series_.mean() # current iteration moving average
+            
+            # pop fifo, and add latest iter
+            series_ = np.insert(series_, len(series_), _iter_ma)
+            series_ = np.delete(series_, 0)
+            
+            forecast.append(_iter_ma)
+            
+        return np.array(forecast)
+    
+    
+    def exponential(self, factor : float = 0.5) -> np.ndarray:
+        series_ = self.series # make a copy of the original iterable
+        forecast = [] # append the forecasted values to the list to return
+        
+        factors = [factor / i for i in range(1, self.n_forecast + 1)]
+        
+        for _ in range(self.n_forecast):
+            _iter_ma = (series_ * factors).sum() # current iteration moving average
             
             # pop fifo, and add latest iter
             series_ = np.insert(series_, len(series_), _iter_ma)
