@@ -1,17 +1,49 @@
+# -*- encoding: utf-8 -*-
+
+"""
+A Set of Simplistic Time Series Models
+
+A set of simplistic time series models developed on top of `pandas`
+and `numpy` functionalities to provide quick analysis and develop a
+base line for a univariate time series data.
+
+@author:  Debmalya Pramanik
+@version: v0.0.1
+"""
+
 import warnings
 import numpy as np
 
 class MovingAverage:
     """
-    A Base Method for Moving Average based Forecasting Model
+    A Set of Moving Average (MA) based Models for Time Series Methods
     
     A moving average is the most simple timeseries model, which is
-    implemented using python. Note, the `.rolling` and `.cumsum`
-    methods of `pandas` and `numpy` respectively is used internally
-    where required to achieve the forecast.
+    implemented using python. However, when used well the MA model is
+    able to provide much analysis and is one of the favorites for a
+    quick understanding in the stock market.
+    
+    Note, the `.rolling` and `.cumsum` methods of `pandas` and
+    `numpy` respectively is used internally where required to
+    achieve the forecast.
+
+    :type  n_lookback: int
+    :param n_lookback: Number of periods to lookback into the past.
+                       Typically, 'n-lags' is a good indicator of
+                       price, as the price of `(N+1)` is always a
+                       factor of `N, N-1, N-2, ..., N-n` where `n`
+                       can be determined statistically.
+
+    :type  n_forecast: int
+    :param n_forecast: Number of periods to forecast into the future.
+
+    :type  series: iterable
+    :param series: Time series data, where each item of the iterable
+                   is a value at interval `n, ..., N-2, N-1, N` where
+                   `N` is the value at current date.
     """
     
-    def __init__(self, n_lookback : int, n_forecast : int, series : list) -> None:
+    def __init__(self, n_lookback : int, n_forecast : int, series : np.ndarray) -> None:
         self.n_lookback = n_lookback
         self.n_forecast = n_forecast
         
