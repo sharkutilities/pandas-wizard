@@ -7,6 +7,8 @@
 <br>
 
 <div align = "justify">
+
+**WARNING:** Merging all the time series gists into a single module.
   
 ## Time Series Featuring
 
