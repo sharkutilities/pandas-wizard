@@ -14,8 +14,6 @@ base line for a univariate time series data.
 import warnings
 import numpy as np
 
-from _base import UnivariateSeries
-
 class MovingAverage:
     """
     A Set of Moving Average (MA) based Models for Time Series Methods
