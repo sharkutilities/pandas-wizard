@@ -106,3 +106,25 @@ class DataReader(object):
         frame = pd.concat([self.func_(file, **kwargs) for file in TQ(files)], ignore_index = True)
         
         return frame
+
+
+def percentile(n : float) -> float:
+    """
+    Calculate the Percentile/Quantile of an Array
+
+    The numpy function `np.quantile(x)` is used for calculating the
+    quantile of a series of values, however the same is not available
+    when using `pd.groupby().agg({})`. To overcome this, the
+    `percentile()` function can be used to calculate aggregation on a
+    grouped feature. Simply call the function like:
+
+    ```python
+    df.groupby("ID").agg({"price" : [min, percentile(0.50), max]})
+    ```
+    """
+
+    def percentile_(x : Iterable[float]) -> float:
+        return x.quantile(n) # ! np.quantile() used, for `ndarray`
+    
+    percentile_.__name__ = f"Q{n*100:.0f}"
+    return percentile_
