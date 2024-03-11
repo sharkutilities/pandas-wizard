@@ -60,10 +60,10 @@ class DataReader(object):
         else:
             # we now know the type of file, thus we can now define meta functions
             # this enables calling `self.func_(*args, **kwargs)`
-            if self.filetype == "csv":
-                self.func_ = pd.read_csv
-            else:
-                self.func_ = pd.read_excel
+            self.func_ = {
+                "csv"  : pd.read_csv,
+                "xlsx" : pd.read_excel
+            }.get(self.filetype)
 
         # * additional arguments to control the workflow/environment
         for argument, value in kwargs.items():
