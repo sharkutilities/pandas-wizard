@@ -1,7 +1,13 @@
 <div align = "center">
-<h1>PANDAS Utilities</h1>
-<p>a set of functions that extends from <code>pandas</code> to reduce code duplicacy</p>
-<a href = "#"><code>Colab <b>Notebook</b></code></a>
+
+# [`pandas`](https://pandas.pydata.org/) Utilities
+
+[![Zenith Clown](https://img.shields.io/badge/🧠-Debmalya_Pramanik-blue)](https://zenithclown.github.io/)
+[![REPO:ADMIN](https://img.shields.io/badge/👔-ZenithClown-2A8542)](https://github.com/ZenithClown)
+[![CODE:DOCUMENTATION](https://img.shields.io/badge/👔-DOCS-42F5DD)](https://zenithclown.github.io/code/modules/docs/_build/html/pandas_utils.html)
+<br>
+✨ *a set of functions that extends from <code>pandas</code> to reduce code duplicacy* ✨
+
 </div>
 
 <br>
