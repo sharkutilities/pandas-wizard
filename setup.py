@@ -36,7 +36,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
-        "License :: OSI Approved :: MIT license"
+        "License :: OSI Approved :: MIT License"
     ],
     project_urls = {
         "Issue Tracker" : "https://github.com/sharkutilities/pandas-utilities/issues"
