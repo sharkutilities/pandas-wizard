@@ -8,6 +8,6 @@ utility functions for `pandas` module. The package is kept simple and
 minimalistic such that external dependencies are reduced.
 """
 
-# ? package follows https://semver.org/spec/v2.0.0.html
-# ? pre-release tag `dev` indicates package under development
-__version__ = "0.0.1-dev"
+# ? package follows https://peps.python.org/pep-0440/
+# ? https://python-semver.readthedocs.io/en/latest/advanced/convert-pypi-to-semver.html
+__version__ = "0.0.1.dev0"
