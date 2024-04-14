@@ -3,7 +3,7 @@
 """
 Utility Functions, Wrappers for pandas Library - Coming Soon!
 
-The :mod:`pdutils` module includes functions, wrappers and other
+The :mod:`pdwizard` module includes functions, wrappers and other
 utility functions for `pandas` module. The package is kept simple and
 minimalistic such that external dependencies are reduced.
 """

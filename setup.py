@@ -6,17 +6,17 @@
 from setuptools import setup
 from setuptools import find_packages
 
-import pdutils
+import pandaswizard
 
 setup(
-    name = "pandas-utilities",
-    version = pdutils.__version__,
+    name = "pandas-wizard",
+    version = pandaswizard.__version__,
     author = "shark-utilities developers",
     author_email = "neuralNOD@outlook.com",
     description = "Utility Functions, Wrappers for pandas Module",
     long_description = open("README.md", "r").read(),
     long_description_content_type = "text/markdown",
-    url = "https://github.com/sharkutilities/pandas-utilities",
+    url = "https://github.com/sharkutilities/pandas-wizard",
     packages = find_packages(),
     classifiers = [
         "Development Status :: 1 - Planning",
@@ -39,7 +39,7 @@ setup(
         "License :: OSI Approved :: MIT License"
     ],
     project_urls = {
-        "Issue Tracker" : "https://github.com/sharkutilities/pandas-utilities/issues"
+        "Issue Tracker" : "https://github.com/sharkutilities/pandas-wizard/issues"
     },
     keywords = [
         # keywords for finding the package::
