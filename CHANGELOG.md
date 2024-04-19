@@ -37,6 +37,26 @@ this [link](https://python-semver.readthedocs.io/en/latest/advanced/convert-pypi
 ## Release Note(s)
 
 The release notes are documented, the list of changes to each different release are documented. The `major.minor` patch are indicated
-under `h3` tags, while the `micro` and "version identifiers" are listed under `h4` and subsequent headlines.
+under `h3` tags, while the `micro` and "version identifiers" are listed under `h4` and subsequent headlines. The legend for
+changelogs are as follows:
+
+  * 🎉 - **Major Feature** : something big that was not available before.
+  * ✨ - **Feature Enhancement** : a miscellaneous minor improvement of an existing feature.
+  * 🛠️ - **Patch/Fix** : something that previously didn’t work as documented – or according to reasonable expectations – should now work.
+  * ⚙️ - **Code Efficiency** : an existing feature now may not require as much computation or memory.
+  * 💣 - **Code Refactoring** : a breakable change often associated with `major` version bump.
+
+### Version 1.0.0
+
+We're pleased to annouce the first major release and preview-built for **`pandaswizard`**! This version mainly focuses on enduser
+feedback and basic setup for the module.
+
+#### Version 1.0.0.dev0 | Release Date: 19.04.2024
+
+The first `dev` or `preview-build` for `v1.0.0` focusing on function development and objective documentation. The version
+focuses on providing basic features like:
+
+  * 🎉 `pandaswizard.quantile`: A simple function to calculate quantile of a grouped data series,
+  * 🎉 `pandaswizard.percentile`: A simple function to calculate percentile of a grouped data series.
 
 </div>

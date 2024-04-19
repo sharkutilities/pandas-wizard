@@ -45,7 +45,9 @@ setup(
         # keywords for finding the package::
         "pandas", "utility", "utilities", "util", "utils",
         # keywords for finding the package relevant to usecases::
-        "wrappers", "data science", "data analysis", "data scientist", "data analyst"
+        "wrappers", "data science", "data analysis", "data scientist", "data analyst",
+        # keywords as per available functionalities::
+        "statistics", "percentile", "quantile", "probability"
     ],
     python_requires = ">=3.8"
 )
