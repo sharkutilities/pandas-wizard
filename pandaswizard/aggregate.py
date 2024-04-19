@@ -20,6 +20,9 @@ def percentile(n : float, outname : str = None, **kwargs) -> float:
     a type of [*quanitile*](https://en.wikipedia.org/wiki/Quantile)
     and can be interchangeably used.
 
+    Internally, the function uses the `pd.Series.quantile(n = n / 100)`
+    method to calculate the n-th percentile of the grouped series.
+
     :type  n: int or float
     :param n: Percentage value to compute. Values must be between
         `[0, 100]` both inclusive.
@@ -36,7 +39,16 @@ def percentile(n : float, outname : str = None, **kwargs) -> float:
             use for estimating the percentile. There are many
             different methods of which some are unique to NumPy.
             Accepts any value as in `np.percentile(method = )`
-            parameter, defaults to "linear" method.
+            parameter, defaults to "linear" method. However, for
+            the `pd.Series.quantile()` the argument `method` is
+            termed as `interpolation` and the values can be:
+            {'linear', 'lower', 'higher', 'midpoint', 'nearest'}.
+
+        * **interpolation** (*str*): Same as :attr:`method` the
+            method for quantile calculation as per pandas. Both the
+            attribute :attr:`method` and :attr:`interpolation` cannot
+            be passed at the same time, and raises `AssertionError`
+            if done so.
 
     Example and Usages
     ------------------
@@ -63,13 +75,17 @@ def percentile(n : float, outname : str = None, **kwargs) -> float:
     using the argument `outname`.
     """
 
-    method = kwargs.get("method", "linear")
+    assert not all(["method" in kwargs, "interpolation" in kwargs]), \
+        "Either `method` or `interpolation` is required. Received both."
+
+    method = kwargs.get("method", kwargs.get("interpolation", "linear"))
 
     def percentile_(x : list) -> float:
-        return x.percentile(n, method = method)
+        return x.quantile(n / 100, interpolation = method)
 
-    percentile_.__name__ = outname or f"Q{n:.2f}"
+    percentile_.__name__ = outname or f"P{n:.2f}"
     return percentile_
+
 
 def quantile(n : float, outname : str = None, **kwargs) -> float:
     """
@@ -80,6 +96,9 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
     with equal probabilities, or dividing the observation in a
     sample in the same way. More information is available
     [here](https://en.wikipedia.org/wiki/Quantile).
+
+    Internally, the function uses the `pd.Series.quantile()` method
+    to calculate the n-th quantile of the grouped series.
 
     :type  n: int or float
     :param n: Probability value for the quantiles to compute. The
@@ -97,7 +116,16 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
             use for estimating the quantile. There are many
             different methods of which some are unique to NumPy.
             Accepts any value as in `np.quantile(method = )`
-            parameter, defaults to "linear" method.
+            parameter, defaults to "linear" method. However, for
+            the `pd.Series.quantile()` the argument `method` is
+            termed as `interpolation` and the values can be:
+            {'linear', 'lower', 'higher', 'midpoint', 'nearest'}.
+
+        * **interpolation** (*str*): Same as :attr:`method` the
+            method for quantile calculation as per pandas. Both the
+            attribute :attr:`method` and :attr:`interpolation` cannot
+            be passed at the same time, and raises `AssertionError`
+            if done so.
 
     Example and Usages
     ------------------
@@ -111,10 +139,10 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
     data = pd.DataFrame(data = {"G" : ["A", "B", "B"], "V" : [1, 2, 3]})
 
     # CASE-I: standalone usage, can be used on multiple features
-    quantile = data.groupby("A").agg("V" : pdw.quantile(50))
+    quantile = data.groupby("A").agg("V" : pdw.quantile(0.5))
 
     # CASE-II: usage in conjunture of any other accepted function
-    quantile = data.groupby("A").agg("V" : [sum, pdw.quantile(50)])
+    quantile = data.groupby("A").agg("V" : [sum, pdw.quantile(0.5)])
     ```
 
     Both the methods calculates the quantile for the grouped value.
@@ -124,10 +152,13 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
     using the argument `outname`.
     """
 
-    method = kwargs.get("method", "linear")
+    assert not all(["method" in kwargs, "interpolation" in kwargs]), \
+        "Either `method` or `interpolation` is required. Received both."
+
+    method = kwargs.get("method", kwargs.get("interpolation", "linear"))
 
     def quantile_(x : list) -> float:
-        return x.quantile(n, method = method)
+        return x.quantile(n, interpolation = method)
 
-    quantile_.__name__ = outname or f"Q{n:.2f}"
+    quantile_.__name__ = outname or f"Q{n*100:.2f}"
     return quantile_
