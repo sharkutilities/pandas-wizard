@@ -29,10 +29,10 @@ the [`pandas`](https://pypi.org/project/pandas/) module and use cases. The below
 ```python
 import pandaswizard as pdw
 
-percentiles = df.groupby("group").agg({"A" : pdw.percentile(0.05)})
+percentiles = df.groupby("group").agg({"A" : pdw.percentile(50)})
 percentiles.head()
 ```
 
-The above function calculates the 0.05, i.e., 5th percentile of the feature "A" based on the grouped column "group" from the data frame.
+The above function calculates the 50th percentile, i.e., the median of the feature "A" based on the grouped column "group" from the data frame.
 
 </div>
