@@ -10,4 +10,10 @@ minimalistic such that external dependencies are reduced.
 
 # ? package follows https://peps.python.org/pep-0440/
 # ? https://python-semver.readthedocs.io/en/latest/advanced/convert-pypi-to-semver.html
-__version__ = "0.0.1.dev0"
+__version__ = "1.0.0.dev0"
+
+# init-time options registrations
+from pandaswizard.aggregate import (
+    quantile,
+    percentile
+)
