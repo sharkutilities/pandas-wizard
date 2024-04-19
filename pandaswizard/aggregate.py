@@ -8,6 +8,28 @@ and the utility functions provided here can be applied under the
 aggregation section.
 """
 
+import pandas as pd
+
+def __set_method__(kwargs : dict):
+    """
+    Set "Method"/"Interpolation" Attribute for Aggregated Function(s)
+
+    Check individual function for attribute defination and usages.
+    The function returns values as used by :func:`percentile` and
+    :func:`quantile` methods defined below.
+    """
+
+    assert not all(["method" in kwargs, "interpolation" in kwargs]), \
+        "Either `method` or `interpolation` is required. Received both."
+
+    method = kwargs.get("method", kwargs.get("interpolation", "linear"))
+    return method
+
+
+def __calculate_quantile__(x : pd.Series, n : float, method : str) -> float:
+    return x.quantile(n, interpolation = method)
+
+
 def percentile(n : float, outname : str = None, **kwargs) -> float:
     """
     Compute the n-th Percentile for the Grouped Data Series
@@ -75,13 +97,10 @@ def percentile(n : float, outname : str = None, **kwargs) -> float:
     using the argument `outname`.
     """
 
-    assert not all(["method" in kwargs, "interpolation" in kwargs]), \
-        "Either `method` or `interpolation` is required. Received both."
-
-    method = kwargs.get("method", kwargs.get("interpolation", "linear"))
+    method = __set_method__(kwargs)
 
     def percentile_(x : list) -> float:
-        return x.quantile(n / 100, interpolation = method)
+        return __calculate_quantile__(x, n = n / 100, method = method)
 
     percentile_.__name__ = outname or f"P{n:.2f}"
     return percentile_
@@ -152,13 +171,10 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
     using the argument `outname`.
     """
 
-    assert not all(["method" in kwargs, "interpolation" in kwargs]), \
-        "Either `method` or `interpolation` is required. Received both."
-
-    method = kwargs.get("method", kwargs.get("interpolation", "linear"))
+    method = __set_method__(kwargs)
 
     def quantile_(x : list) -> float:
-        return x.quantile(n, interpolation = method)
+        return __calculate_quantile__(x, n = n, method = method)
 
-    quantile_.__name__ = outname or f"Q{n*100:.2f}"
+    quantile_.__name__ = outname or f"Q{n * 100:.2f}"
     return quantile_
