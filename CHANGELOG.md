@@ -51,6 +51,17 @@ changelogs are as follows:
 We're pleased to annouce the first major release and preview-built for **`pandaswizard`**! This version mainly focuses on enduser
 feedback and basic setup for the module.
 
+### Version 1.1.0.dev0 | Release Date: 20.04.2024
+
+Major enhancement of the preview built, also created an favicon and logo for the project. The logo is modified from the original
+pandas logo.
+
+  * ⚙️ Added two new functions `__set_method__()` and `__calculate_quantile__()` to reduce code duplicacy,
+  * ✨ (#3) Added the ability to choose from either `pandas` or `numpy` to calculate grouped result:
+    - ✨ allows the user to choose any of the *method* to calculate based on `numpy` documentations,
+    - 💣 numpy version requirement is `numpy >= 1.22` due to argument change `interpolation` to `method`
+      more [details](https://github.com/numpy/numpy/issues/21283).
+
 #### Version 1.0.1.dev0 | Release Date: 19.04.2024
 
 The first `dev` or `preview-build` for `v1.0.0` focusing on function development and objective documentation. The version
