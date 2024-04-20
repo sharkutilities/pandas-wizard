@@ -57,7 +57,7 @@ Major enhancement of the preview built, also created an favicon and logo for the
 pandas logo.
 
   * ⚙️ Added two new functions `__set_method__()` and `__calculate_quantile__()` to reduce code duplicacy,
-  * ✨ (#3) Added the ability to choose from either `pandas` or `numpy` to calculate grouped result:
+  * ✨ ([#3](https://github.com/sharkutilities/pandas-wizard/issues/3)) Added the ability to choose from either `pandas` or `numpy` to calculate grouped result:
     - ✨ allows the user to choose any of the *method* to calculate based on `numpy` documentations,
     - 💣 numpy version requirement is `numpy >= 1.22` due to argument change `interpolation` to `method`
       more [details](https://github.com/numpy/numpy/issues/21283).
