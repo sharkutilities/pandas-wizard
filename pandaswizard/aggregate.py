@@ -8,9 +8,10 @@ and the utility functions provided here can be applied under the
 aggregation section.
 """
 
+import numpy as np
 import pandas as pd
 
-def __set_method__(kwargs : dict):
+def __set_method__(kwargs : dict) -> str:
     """
     Set "Method"/"Interpolation" Attribute for Aggregated Function(s)
 
@@ -26,8 +27,60 @@ def __set_method__(kwargs : dict):
     return method
 
 
-def __calculate_quantile__(x : pd.Series, n : float, method : str) -> float:
-    return x.quantile(n, interpolation = method)
+def __set_basemod__(basemod : str) -> str:
+    assert basemod in ["pd", "pandas", "np", "numpy"], \
+        f"basemod = {basemod} is not valid, and/or not implemented."
+
+    basemod = "pd" if basemod in ["pd", "pandas"] else "np"
+    return basemod
+
+
+def __calculate_quantile__(
+            x : pd.Series,
+            n : float,
+            method : str,
+            func : str,
+            dropna : bool,
+            basemod : str
+    ) -> float:
+    """
+    Calculates Percentile/Quantile for a Grouped Series
+
+    The function can calculate both percentile and/or quantile, but
+    name is set as `__calculate_quantile__()` as default. Uses either
+    the `numpy` or the `pandas` module to calculate the result.
+    """
+
+    retval = None # ? return value, i.e., quantile/percentile
+    basemod = __set_basemod__(basemod) # ? defaults to pd (pandas)
+
+    if basemod == "pd":
+        # ? use pandas to calculate the series quantile/percentile
+        # this is the default feature, and mimics np.nanquantile
+        retval = x.quantile(n, interpolation = method)
+    else:
+        # ? else use numpy to calculate series quantile/percentile
+        # ! this is always true, asserted in `__set_basemod__()`
+        x = x.values # ? convert to an np.ndarray
+        n = n * 100 if func == "percentile" else n
+
+        __func_dispatcher__ = {
+            "percentile" : {
+                True : np.nanpercentile,
+                False : np.percentile
+            },
+            "quantile" : {
+                True : np.nanquantile,
+                False : np.quantile
+            }
+        }
+
+        try:
+            retval = __func_dispatcher__[func][dropna](x, n, method = method)
+        except TypeError:
+            raise SystemError("This may be due to `np < 1.22`, https://github.com/numpy/numpy/issues/21283")
+
+    return retval
 
 
 def percentile(n : float, outname : str = None, **kwargs) -> float:
@@ -72,6 +125,20 @@ def percentile(n : float, outname : str = None, **kwargs) -> float:
             be passed at the same time, and raises `AssertionError`
             if done so.
 
+        * **basemod** (*str*): Abbreviation for "base module", allows
+            the user to choose from `pandas` or `numpy` to calculate
+            percentile. When choosing `numpy` the default behaviour
+            is `np.nanquantile()` as followed by `pd.Series.quantile`
+            however, you can pass `dropna = False` which calculates
+            using `np.percentile` and returns `np.nan` if input
+            contain nan values. Defaults to `pandas`. Allowed terms:
+            {'pd', 'pandas', 'np', 'numpy'}.
+
+        * **dropna** (*bool*): Calculate the percentile by dropping
+            the `nan` values. This method mimics the `np.nanpercentile`
+            function, which is the default as in `pd.Series.quantile()`.
+            More information: https://stackoverflow.com/a/70002786.
+
     Example and Usages
     ------------------
 
@@ -99,8 +166,12 @@ def percentile(n : float, outname : str = None, **kwargs) -> float:
 
     method = __set_method__(kwargs)
 
+    # ? the validation and check are done in __calculate_quantile__()
+    dropna = kwargs.get("dropna", True)
+    basemod = kwargs.get("basemod", "pandas")
+
     def percentile_(x : list) -> float:
-        return __calculate_quantile__(x, n = n / 100, method = method)
+        return __calculate_quantile__(x, n = n / 100, method = method, func = "percentile", dropna = dropna, basemod = basemod)
 
     percentile_.__name__ = outname or f"P{n:.2f}"
     return percentile_
@@ -146,6 +217,20 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
             be passed at the same time, and raises `AssertionError`
             if done so.
 
+        * **basemod** (*str*): Abbreviation for "base module", allows
+            the user to choose from `pandas` or `numpy` to calculate
+            percentile. When choosing `numpy` the default behaviour
+            is `np.nanquantile()` as followed by `pd.Series.quantile`
+            however, you can pass `dropna = False` which calculates
+            using `np.percentile` and returns `np.nan` if input
+            contain nan values. Defaults to `pandas`. Allowed terms:
+            {'pd', 'pandas', 'np', 'numpy'}.
+
+        * **dropna** (*bool*): Calculate the percentile by dropping
+            the `nan` values. This method mimics the `np.nanpercentile`
+            function, which is the default as in `pd.Series.quantile()`.
+            More information: https://stackoverflow.com/a/70002786.
+
     Example and Usages
     ------------------
 
@@ -173,8 +258,12 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
 
     method = __set_method__(kwargs)
 
+    # ? the validation and check are done in __calculate_quantile__()
+    dropna = kwargs.get("dropna", True)
+    basemod = kwargs.get("basemod", "pandas")
+
     def quantile_(x : list) -> float:
-        return __calculate_quantile__(x, n = n, method = method)
+        return __calculate_quantile__(x, n = n, method = method, func = "quantile", dropna = dropna, basemod = basemod)
 
     quantile_.__name__ = outname or f"Q{n * 100:.2f}"
     return quantile_
