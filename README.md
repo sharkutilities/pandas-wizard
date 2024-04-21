@@ -3,6 +3,16 @@
   pandas-wizard
 </h1>
 
+<div align = "center">
+
+[![Documentation Status](https://readthedocs.org/projects/pandas-wizard/badge/?version=latest)](https://pandas-wizard.readthedocs.io/en/latest/?badge=latest)
+[![GitHub Issues](https://img.shields.io/github/issues/sharkutilities/pandas-wizard?style=plastic)](https://github.com/sharkutilities/pandas-wizard/issues)
+[![GitHub Forks](https://img.shields.io/github/forks/sharkutilities/pandas-wizard?style=plastic)](https://github.com/sharkutilities/pandas-wizard/network)
+[![GitHub Stars](https://img.shields.io/github/stars/sharkutilities/pandas-wizard?style=plastic)](https://github.com/sharkutilities/pandas-wizard/stargazers)
+[![LICENSE File](https://img.shields.io/github/license/sharkutilities/pandas-wizard?style=plastic)](https://github.com/sharkutilities/pandas-wizard/blob/master/LICENSE)
+
+</div>
+
 <div align = "justify">
 
 [**Pandas-Wizard (`pandaswizard`)**](https://github.com/sharkutilities/pandas-wizard) is a simple Python module for providing
