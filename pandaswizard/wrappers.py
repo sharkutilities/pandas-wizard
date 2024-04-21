@@ -40,9 +40,14 @@ def recordCounter(func : callable) -> callable:
     LIMITATION: The decorator works IFF the dataframe is either the
     first arguments or is passed as an keyword argument with the
     argument name as either `data` or `frame` which is the general
-    convention that is followed throughout my code. If the code has
+    convention that is followed throughout the module. If the code has
     arguments, then it has preference over the keyword arguments and
     the `dataframe` must be the first argument.
+
+    USE Cases: Often on function execution, joining/dropping records
+    users need to execute `df.shape` before and after to check the
+    record count. This is simplified and gives the result, and thus
+    reducing code during such operations.
     """
 
     @functools.wraps(func)
@@ -62,20 +67,22 @@ def recordCounter(func : callable) -> callable:
             print("  >> Failed to Execute. DF Object is Not Found.")
 
         start_record_count_ = __frame.shape[0] if not errors else 0
-        retval = func(*args, **kwargs)
+        retval = func(*args, **kwargs) # ? execute the func as is
 
         try:
             final_record_count_ = retval.shape[0]
         except Exception as err:
-            final_record_count_ = 0
+            errors, final_record_count_ = True, 0
             print(f"  >> Function does not Return a DF. ERROR: {err}")
 
-        print(f"  >> Original Record Count = {start_record_count_:,}")
-        print(f"  >> Final Record Count    = {final_record_count_:,}")
+        if not errors:
+            print(f"  >> Original Record Count = {start_record_count_:,}")
+            print(f"  >> Final Record Count    = {final_record_count_:,}")
 
-        n_change = final_record_count_ - start_record_count_
-        p_change = (abs(n_change) / start_record_count_) * 100 if not errors else 0
-        print(f"  >> Dropped/Added Records = {n_change:,} (= {p_change:.3f}%)")
+            n_change = final_record_count_ - start_record_count_
+            p_change = (abs(n_change) / start_record_count_) * 100 if not errors else 0
+            print(f"  >> Dropped/Added Records = {n_change:,} (= {p_change:.3f}%)")
+
         return retval
 
     return _wrapper
