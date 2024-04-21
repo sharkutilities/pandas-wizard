@@ -18,24 +18,25 @@ def recordCounter(func : callable) -> callable:
     `.drop()` or `.merge()` or etc.) the decorator prints the number
     of records before and after the execution of the function.
 
-    ```python
-    import pandaswizard as pdw # attempt to create an ubiquitous naming
+    .. code-block:: python
 
-    frame = pd.DataFrame(data = {
-        "LABEL" : ["A", "A", "B"],
-        "VALUES" : [1, 2, 3]
-    })
+        import pandas as pd
+        import pandaswizard as pdw # attempt to create an ubiquitous naming
 
-    @pdw.wrappers.recordCounter
-    def dropvals(frame):
-        return frame[frame["LABEL"] != "B"]
+        frame = pd.DataFrame(data = {
+            "LABEL" : ["A", "A", "B"],
+            "VALUES" : [1, 2, 3]
+        })
 
-    filtered = dropvals(frame = frame.copy())
-    >> Executed with @recordCounter[`dropvals`]
-    >>   >> Original Record Count = 3
-    >>   >> Final Record Count    = 2
-    >>   >> Dropped/Added Records = -1 (= 33.333%)
-    ```
+        @pdw.wrappers.recordCounter
+        def dropvals(frame):
+            return frame[frame["LABEL"] != "B"]
+
+        filtered = dropvals(frame = frame.copy())
+        >> Executed with @recordCounter[`dropvals`]
+        >>   >> Original Record Count = 3
+        >>   >> Final Record Count    = 2
+        >>   >> Dropped/Added Records = -1 (= 33.333%)
 
     LIMITATION: The decorator works IFF the dataframe is either the
     first arguments or is passed as an keyword argument with the
