@@ -39,7 +39,9 @@ setup(
         "License :: OSI Approved :: MIT License"
     ],
     project_urls = {
-        "Issue Tracker" : "https://github.com/sharkutilities/pandas-wizard/issues"
+        "Issue Tracker" : "https://github.com/sharkutilities/pandas-wizard/issues",
+        "Code Documentations" : "https://pandas-wizard.readthedocs.io/en/latest/index.html",
+        "Org. Homepage" : "https://github.com/sharkutilities"
     },
     keywords = [
         # keywords for finding the package::
