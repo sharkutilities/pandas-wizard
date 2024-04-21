@@ -8,6 +8,7 @@ and the utility functions provided here can be applied under the
 aggregation section.
 """
 
+import warnings
 import numpy as np
 import pandas as pd
 
@@ -77,8 +78,22 @@ def __calculate_quantile__(
 
         try:
             retval = __func_dispatcher__[func][dropna](x, n, method = method)
-        except TypeError:
-            raise SystemError("This may be due to `np < 1.22`, https://github.com/numpy/numpy/issues/21283")
+        except TypeError as err:
+            __ref_issue = "https://github.com/numpy/numpy/issues/21283"
+            warnings.warn(
+                f"NumPy/np Version < 1.22, {__ref_issue} Error: {err}",
+                FutureWarning
+            )
+
+            # ? for older version, try with attribute `interpolation`, else
+            # ! this should not raise error, unless legacy numpy version, OR
+            # method/interpolation value is given for a newer version, not available
+            try:
+                retval = __func_dispatcher__[func][dropna](x, n, interpolation = method)
+            except Exception as err:
+                __warn_message = f"Cannot call attribute `method/interpolation` = {err}"
+                warnings.warn(f"{__warn_message}. Returning value w/o argument", SyntaxWarning)
+                retval = __func_dispatcher__[func][dropna](x, n)
 
     return retval
 
