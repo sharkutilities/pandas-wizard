@@ -69,8 +69,13 @@ def recordCounter(func : callable) -> callable:
         start_record_count_ = __frame.shape[0] if not errors else 0
         retval = func(*args, **kwargs) # ? execute the func as is
 
+        # ! retval:: can either be a dataframe, or iterable where
+        # the first returned value is always a dataframe, then we can
+        __retframe = retval[0] if isinstance(retval, (list, tuple)) \
+            else retval if isinstance(retval, pd.DataFrame) else None
+
         try:
-            final_record_count_ = retval.shape[0]
+            final_record_count_ = __retframe.shape[0]
         except Exception as err:
             errors, final_record_count_ = True, 0
             print(f"  >> Function does not Return a DF. ERROR: {err}")
