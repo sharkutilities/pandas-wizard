@@ -1,4 +1,42 @@
 [project]
 name = "pandas-wizard"
 authors = [{name = "sharkutilities", email = "neuralNOD@outlook.com"}]
-dynamic = ["version", "description"]
+dynamic = ["version"]
+readme = {file = "README.md", content-type = "text/markdown"}
+description = "Utility Functions, Wrappers for pandas Module"
+license = {file = "LICENSE"}
+keywords = [
+    # keywords for finding the package::
+    "pandas", "utility", "utilities", "util", "utils",
+    # keywords for finding the package relevant to usecases::
+    "wrappers", "data science", "data analysis", "data scientist", "data analyst",
+    # keywords as per available functionalities::
+    "statistics", "percentile", "quantile", "probability"
+]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "Operating System :: Unix",
+    "Operating System :: POSIX",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License"
+]
+
+
+[project.urls]
+Homepage = "https://github.com/sharkutilities/pandas-wizard"
+Documentation = "https://pandas-wizard.readthedocs.io/en/latest/index.html"
+Issues = "https://github.com/sharkutilities/pandas-wizard/issues"
+Changelog = "https://github.com/sharkutilities/pandas-wizard/blob/master/CHANGELOG.md"

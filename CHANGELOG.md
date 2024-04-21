@@ -51,13 +51,25 @@ changelogs are as follows:
 We're pleased to annouce the first major release and preview-built for **`pandaswizard`**! This version mainly focuses on enduser
 feedback and basic setup for the module.
 
+### Version 1.1.0a0 | Release Date:
+
+Moving from `development` release to `alpha` testing release, the version brings the additional new features and/or enhancements for
+the module:
+
+  * 🎉 Added **`pdw.wrappers`** module housing useful decorators,
+  * 🛠️ ([#7](https://github.com/sharkutilities/pandas-wizard/issues/7)) For legacy/`np < 1.22` try to return the aggregated
+    value using "interpolation" attribute.
+  * 🎉📃 Basic code documentation is now available, hosted using
+    [readthedocs/pandas-wizard](https://pandas-wizard.readthedocs.io/en/latest/index.html)
+
 ### Version 1.1.0.dev0 | Release Date: 20.04.2024
 
 Major enhancement of the preview built, also created an favicon and logo for the project. The logo is modified from the original
 pandas logo.
 
   * ⚙️ Added two new functions `__set_method__()` and `__calculate_quantile__()` to reduce code duplicacy,
-  * ✨ ([#3](https://github.com/sharkutilities/pandas-wizard/issues/3)) Added the ability to choose from either `pandas` or `numpy` to calculate grouped result:
+  * ✨ ([#3](https://github.com/sharkutilities/pandas-wizard/issues/3)) Added the ability to choose from either `pandas` or `numpy`
+    to calculate grouped result:
     - ✨ allows the user to choose any of the *method* to calculate based on `numpy` documentations,
     - 💣 numpy version requirement is `numpy >= 1.22` due to argument change `interpolation` to `method`
       more [details](https://github.com/numpy/numpy/issues/21283).
