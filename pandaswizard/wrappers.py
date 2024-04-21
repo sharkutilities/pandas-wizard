@@ -5,9 +5,6 @@ A List of Useful Decorators/Wrappers for `pandas` Modules
 
 The decorators can be used for profiling/understanding the a function
 which are developed to handle a `DataFrame` object.
-
-@author:  Debmalya Pramanik
-@version: v0.0.1
 """
 
 import functools
@@ -22,17 +19,18 @@ def recordCounter(func : callable) -> callable:
     of records before and after the execution of the function.
 
     ```python
-    from pandas_wrappers_ import recordCounter # this decorator
+    import pandaswizard as pdw # attempt to create an ubiquitous naming
 
     frame = pd.DataFrame(data = {
         "LABEL" : ["A", "A", "B"],
         "VALUES" : [1, 2, 3]
     })
 
-    @recordCounter
+    @pdw.wrappers.recordCounter
     def dropvals(frame):
         return frame[frame["LABEL"] != "B"]
-    
+
+    filtered = dropvals(frame = frame.copy())
     >> Executed with @recordCounter[`dropvals`]
     >>   >> Original Record Count = 3
     >>   >> Final Record Count    = 2
@@ -65,7 +63,7 @@ def recordCounter(func : callable) -> callable:
 
         start_record_count_ = __frame.shape[0] if not errors else 0
         retval = func(*args, **kwargs)
-        
+
         try:
             final_record_count_ = retval.shape[0]
         except Exception as err:
@@ -79,5 +77,5 @@ def recordCounter(func : callable) -> callable:
         p_change = (abs(n_change) / start_record_count_) * 100 if not errors else 0
         print(f"  >> Dropped/Added Records = {n_change:,} (= {p_change:.3f}%)")
         return retval
-    
+
     return _wrapper
