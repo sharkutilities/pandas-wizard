@@ -6,11 +6,11 @@
 from setuptools import setup
 from setuptools import find_packages
 
-import pandaswizard
+import pandaswizard as pdw
 
 setup(
     name = "pandas-wizard",
-    version = pandaswizard.__version__,
+    version = pdw.__version__,
     author = "shark-utilities developers",
     author_email = "neuralNOD@outlook.com",
     description = "Utility Functions, Wrappers for pandas Module",

@@ -1,0 +1,4 @@
+[project]
+name = "pandas-wizard"
+authors = [{name = "sharkutilities", email = "neuralNOD@outlook.com"}]
+dynamic = ["version", "description"]
