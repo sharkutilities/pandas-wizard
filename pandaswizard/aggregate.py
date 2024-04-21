@@ -160,17 +160,24 @@ def percentile(n : float, outname : str = None, **kwargs) -> float:
     Assuming an end-user have the basic understanding of `pandas` and
     `percentile`, we can use compute the percentile for a group like:
 
-    ```python
-    import pandas as pd
+    .. code-block:: python
 
-    data = pd.DataFrame(data = {"G" : ["A", "B", "B"], "V" : [1, 2, 3]})
+        import pandas as pd
+        import pandaswizard as pdw
 
-    # CASE-I: standalone usage, can be used on multiple features
-    percentile = data.groupby("A").agg("V" : pdw.percentile(50))
+        data = pd.DataFrame({"G" : ["A", "B", "B"], "V" : [1, 2, 3]})
 
-    # CASE-II: usage in conjunture of any other accepted function
-    percentile = data.groupby("A").agg("V" : [sum, pdw.percentile(50)])
-    ```
+        # CASE-I: standalone usage, can be used on multiple features
+        percentile = data.groupby("A").agg("V" : pdw.percentile(50))
+
+        # CASE-II: usage in conjunture with any other function
+        # `.agg({})` passing dictionary of values, or by passing
+        # named tuples like `.agg(outname = ("column" : ))`
+        # more details: https://stackoverflow.com/a/53619715/6623589
+
+        percentile = data.groupby("A").agg({
+            "V" : [sum, pdw.percentile(50, outname = "P50")]
+        })
 
     Both the methods calculates the percentile for the grouped value.
     In **CASE-I** the argument "outname" does not have any implications
@@ -252,17 +259,24 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
     Assuming an end-user have the basic understanding of `pandas` and
     `quantile`, we can use compute the quantile for a group like:
 
-    ```python
-    import pandas as pd
+    .. code-block:: python
 
-    data = pd.DataFrame(data = {"G" : ["A", "B", "B"], "V" : [1, 2, 3]})
+        import pandas as pd
+        import pandaswizard as pdw
 
-    # CASE-I: standalone usage, can be used on multiple features
-    quantile = data.groupby("A").agg("V" : pdw.quantile(0.5))
+        data = pd.DataFrame({"G" : ["A", "B", "B"], "V" : [1, 2, 3]})
 
-    # CASE-II: usage in conjunture of any other accepted function
-    quantile = data.groupby("A").agg("V" : [sum, pdw.quantile(0.5)])
-    ```
+        # CASE-I: standalone usage, can be used on multiple features
+        quantile = data.groupby("A").agg("V" : pdw.quantile(50))
+
+        # CASE-II: usage in conjunture with any other function
+        # `.agg({})` passing dictionary of values, or by passing
+        # named tuples like `.agg(outname = ("column" : ))`
+        # more details: https://stackoverflow.com/a/53619715/6623589
+
+        quantile = data.groupby("A").agg({
+            "V" : [sum, pdw.quantile(50, outname = "Q0.5")]
+        })
 
     Both the methods calculates the quantile for the grouped value.
     In **CASE-I** the argument "outname" does not have any implications
