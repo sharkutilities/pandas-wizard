@@ -17,3 +17,5 @@ from pandaswizard.aggregate import (
     quantile,
     percentile
 )
+
+from pandaswizard import wrappers
