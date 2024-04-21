@@ -51,7 +51,7 @@ changelogs are as follows:
 We're pleased to annouce the first major release and preview-built for **`pandaswizard`**! This version mainly focuses on enduser
 feedback and basic setup for the module.
 
-### Version 1.1.0a0 | Release Date:
+### Version 1.1.0a0 | Release Date: 21.04.2024
 
 Moving from `development` release to `alpha` testing release, the version brings the additional new features and/or enhancements for
 the module:
