@@ -15,8 +15,8 @@ def recordCounter(func : callable) -> callable:
     Verbose the Shape of the DataFrame Pre- & Post- Function Execution
 
     On execution of a function (typically, if the function uses the
-    `.drop()` or `.merge()` or etc.) the decorator prints the number
-    of records before and after the execution of the function.
+    :attr:`.drop()` or :attr:`.merge()` or etc.) the decorator prints
+    the number of records before and after the execution.
 
     .. code-block:: python
 

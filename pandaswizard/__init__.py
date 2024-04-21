@@ -1,11 +1,18 @@
 # -*- encoding: utf-8 -*-
 
 """
-Utility Functions, Wrappers for pandas Library - Coming Soon!
+Utility Functions, Wrappers for pandas Library
 
 The :mod:`pdwizard` module includes functions, wrappers and other
 utility functions for `pandas` module. The package is kept simple and
-minimalistic such that external dependencies are reduced.
+minimalistic such that external dependencies are reduced. The working
+of the module is divided into the following sections:
+
+    * **`pandaswizard.aggregate`**: a set of aggregate functions that
+      can be used along with `pd.groupby().agg()` method without
+      comprimising functionality.
+    * **`pandaswizard.wrappers`**: a set of decorators/wrappers that
+      can be used along side a function.
 """
 
 # ? package follows https://peps.python.org/pep-0440/

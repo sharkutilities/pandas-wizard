@@ -110,7 +110,7 @@ def percentile(n : float, outname : str = None, **kwargs) -> float:
     a type of [*quanitile*](https://en.wikipedia.org/wiki/Quantile)
     and can be interchangeably used.
 
-    Internally, the function uses the `pd.Series.quantile(n = n / 100)`
+    Internally, the function uses the :meth:`pd.Series.quantile`
     method to calculate the n-th percentile of the grouped series.
 
     :type  n: int or float
@@ -121,14 +121,14 @@ def percentile(n : float, outname : str = None, **kwargs) -> float:
     :param outname: Output name of the aggregated feature when the
         method is used in conjuncture with other functions. This
         does not have any significance when used as in the below
-        example. The outname defaults to `f"Q{n:.2f}"` formatting.
+        example. The outname defaults to :attr:`f"P{n:.2f}"`.
 
     Keyword Arguments
     -----------------
         * **method** (*str*): This parameter specifies the method to
             use for estimating the percentile. There are many
             different methods of which some are unique to NumPy.
-            Accepts any value as in `np.percentile(method = )`
+            Accepts any value as in :meth:`np.percentile`
             parameter, defaults to "linear" method. However, for
             the `pd.Series.quantile()` the argument `method` is
             termed as `interpolation` and the values can be:
@@ -209,7 +209,7 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
     sample in the same way. More information is available
     [here](https://en.wikipedia.org/wiki/Quantile).
 
-    Internally, the function uses the `pd.Series.quantile()` method
+    Internally, the function uses the :meth:`pd.Series.quantile`
     to calculate the n-th quantile of the grouped series.
 
     :type  n: int or float
@@ -220,16 +220,16 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
     :param outname: Output name of the aggregated feature when the
         method is used in conjuncture with other functions. This
         does not have any significance when used as in the below
-        example. The outname defaults to `f"Q{n:.2f}"` formatting.
+        example. The outname defaults to :attr:`f"Q{n:.2f}"`.
 
     Keyword Arguments
     -----------------
         * **method** (*str*): This parameter specifies the method to
             use for estimating the quantile. There are many
             different methods of which some are unique to NumPy.
-            Accepts any value as in `np.quantile(method = )`
+            Accepts any value as in :meth:`np.quantile`
             parameter, defaults to "linear" method. However, for
-            the `pd.Series.quantile()` the argument `method` is
+            the :meth:`pd.Series.quantile` the argument `method` is
             termed as `interpolation` and the values can be:
             {'linear', 'lower', 'higher', 'midpoint', 'nearest'}.
 
@@ -242,7 +242,7 @@ def quantile(n : float, outname : str = None, **kwargs) -> float:
         * **basemod** (*str*): Abbreviation for "base module", allows
             the user to choose from `pandas` or `numpy` to calculate
             percentile. When choosing `numpy` the default behaviour
-            is `np.nanquantile()` as followed by `pd.Series.quantile`
+            is :meth:`np.nanquantile` as followed by `pd.Series.quantile`
             however, you can pass `dropna = False` which calculates
             using `np.percentile` and returns `np.nan` if input
             contain nan values. Defaults to `pandas`. Allowed terms:

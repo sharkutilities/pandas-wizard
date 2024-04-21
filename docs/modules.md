@@ -7,6 +7,7 @@
 ```
 
 ```{toctree}
+:hidden:
 aggregate.md
 wrappers.md
 ```
