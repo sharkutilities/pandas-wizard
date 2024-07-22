@@ -51,6 +51,13 @@ changelogs are as follows:
 We're pleased to annouce the first major release and preview-built for **`pandaswizard`**! This version mainly focuses on enduser
 feedback and basic setup for the module.
 
+### Version 1.1.0 | WIP
+
+Moveing from `alpha` release to `stable` release. The following features are updated for the release as below:
+
+  * 🎉 Added a wrapper function [`timeit`](./pandaswizard/wrappers.py) to print executed time for a function
+    that returns a pandas dataframe object.
+
 ### Version 1.1.0a0 | Release Date: 21.04.2024
 
 Moving from `development` release to `alpha` testing release, the version brings the additional new features and/or enhancements for
