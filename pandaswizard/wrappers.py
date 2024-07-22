@@ -7,7 +7,9 @@ The decorators can be used for profiling/understanding the a function
 which are developed to handle a `DataFrame` object.
 """
 
+import time
 import functools
+import collections
 import pandas as pd
 
 def recordCounter(func : callable) -> callable:
@@ -91,4 +93,40 @@ def recordCounter(func : callable) -> callable:
 
         return retval
 
+    return _wrapper
+
+
+def timeit(func : callable) -> callable:
+    """
+    A Mimic of the iPython Magic :attr:`%timeit` for Dataframes
+
+    The built-in iPython magic function :attr:`%timeit` displays the
+    executed time of a function, or like the one from command line:
+
+    .. code-block:: shell
+        python -m timeit "function()"
+    
+    The function is built specifically to handle functions which
+    returns a :attr:`pd.DataFrame` object, thus it prints more
+    information like the number of records fetched, shape and other
+    information w/o explictly needing to call additional pandas
+    function by the end-user.
+    """
+
+    @functools.wraps(func)
+    def _wrapper(*args, **kwargs) -> pd.DataFrame:
+        print(f"Executed with @timeit[`{func.__name__}`]")
+
+        start = time.process_time() # capture start time
+        frame = func(*args, **kwargs) # execute function
+
+        # verbose information(s) to the output
+        process_time = time.process_time() - start
+        dtypes_count = collections.Counter(frame.dtypes.values)
+        print(f"  >> Function Executed in {process_time:,.3f} secs.")
+        print(f"  >> Fetched {frame.shape[0]:,} Record(s).")
+        print(f"  >> No. of Feature(s)/Column(s) = {frame.shape[1]:,}.")
+        print(f"  >> Observed Data Type(s) : {dtypes_count}")
+
+        return frame
     return _wrapper
