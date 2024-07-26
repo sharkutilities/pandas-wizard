@@ -25,5 +25,6 @@ from pandaswizard.aggregate import (
     percentile
 )
 
+from pandaswizard import window
 from pandaswizard import wrappers
 from pandaswizard import functions
