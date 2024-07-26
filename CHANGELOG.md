@@ -57,6 +57,10 @@ Moveing from `alpha` release to `stable` release. The following features are upd
 
   * 🎉 Added a wrapper function [`timeit`](./pandaswizard/wrappers.py) to print executed time for a function
     that returns a pandas dataframe object.
+  * 🎉 Added a new module called [`pdw.functions`](./pandaswizard/functions/) which introduces or provides functionalities
+    like "collation" of a series based on some popular metrics like "weighted moving average" dynamically.
+  * 🎉 Introduced a new module [`window`](./pandaswizard/window.py) which acts as a wrapper to the
+    [pd.DataFrame.rolling()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rolling.html) function.
 
 ### Version 1.1.0a0 | Release Date: 21.04.2024
 
