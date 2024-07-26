@@ -26,3 +26,4 @@ from pandaswizard.aggregate import (
 )
 
 from pandaswizard import wrappers
+from pandaswizard import functions
