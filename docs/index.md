@@ -1,4 +1,8 @@
-<h1 align = "center">pandas-wizard</h1>
+<div align = "center">
+
+# pandas-wizard
+
+</div>
 
 <div align = "justify">
 
@@ -40,9 +44,23 @@ statistics.head()
 
 The above function calculates the 50th percentile, i.e., the median of the feature "A" based on the grouped column "group" from the data frame.
 
+## Brief Overview of Capailities
+
+```{eval-rst}
+.. automodule:: pandaswizard
+```
+
+### User Defined Functions
+
+```{eval-rst}
+.. automodule:: pandaswizard.functions
+```
+
 ```{toctree}
 :hidden:
-modules.md
+aggregate.md
+wrappers.md
+functions.md
 ```
 
 ---

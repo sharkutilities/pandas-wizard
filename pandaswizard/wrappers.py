@@ -104,8 +104,9 @@ def timeit(func : callable) -> callable:
     executed time of a function, or like the one from command line:
 
     .. code-block:: shell
+
         python -m timeit "function()"
-    
+
     The function is built specifically to handle functions which
     returns a :attr:`pd.DataFrame` object, thus it prints more
     information like the number of records fetched, shape and other
