@@ -51,11 +51,11 @@ changelogs are as follows:
 We're pleased to annouce the first major release and preview-built for **`pandaswizard`**! This version mainly focuses on enduser
 feedback and basic setup for the module.
 
-The modules **`pandas-wizard`** was developed as an initiative to provide additional functionalities on top of
-[`pandas`](https://github.com/pandas-dev/pandas). [I've](https://github.com/ZenithClown) spent years in developing projects involing the
-use of `pandas` and have always used snippets or redundant [GitHub Gists](https://gist.github.com/ZenithClown) to keep track of additional
-functionalities that can be used alongside. Later, decided to compile some of the code snippets directly into one file and publish the
-same as an package in [PyPI/pandas-wizard](https://pypi.org/project/pandas-wizard/).
+The module **`pandas-wizard`** was developed as an initiative to provide additional functionalities on top of
+[`pandas`](https://github.com/pandas-dev/pandas). [I've](https://github.com/ZenithClown) spent years in developing projects
+involving the use of `pandas` and have always used snippets or redundant [GitHub Gists](https://gist.github.com/ZenithClown)
+to keep track of additional functionalities that can be used alongside and later, decided to compile some of the code snippets
+directly into one file and publish the same as a package in [PyPI/pandas-wizard](https://pypi.org/project/pandas-wizard/).
 
 Moving from `alpha` release to `stable` release. The following features are updated for the release as below:
 
@@ -94,7 +94,7 @@ pandas logo.
 The first `dev` or `preview-build` for `v1.0.0` focusing on function development and objective documentation. The version
 focuses on providing basic features like:
 
-  * 🎉 `pandaswizard.quantile`: A simple function to calculate quantile of a grouped data series,
-  * 🎉 `pandaswizard.percentile`: A simple function to calculate percentile of a grouped data series.
+  * 🎉 `pandaswizard.quantile`: A simple function to calculate the quantile of a grouped data series,
+  * 🎉 `pandaswizard.percentile`: A simple function to calculate the percentile of a grouped data series.
 
 </div>
