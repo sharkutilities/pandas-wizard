@@ -46,14 +46,18 @@ changelogs are as follows:
   * ⚙️ - **Code Efficiency** : an existing feature now may not require as much computation or memory.
   * 💣 - **Code Refactoring** : a breakable change often associated with `major` version bump.
 
-### Version 1.0.0
+### Version 1.1.0 | Stable Release, Release Date - 29-07-2024
 
 We're pleased to annouce the first major release and preview-built for **`pandaswizard`**! This version mainly focuses on enduser
 feedback and basic setup for the module.
 
-### Version 1.1.0 | WIP
+The modules **`pandas-wizard`** was developed as an initiative to provide additional functionalities on top of
+[`pandas`](https://github.com/pandas-dev/pandas). [I've](https://github.com/ZenithClown) spent years in developing projects involing the
+use of `pandas` and have always used snippets or redundant [GitHub Gists](https://gist.github.com/ZenithClown) to keep track of additional
+functionalities that can be used alongside. Later, decided to compile some of the code snippets directly into one file and publish the
+same as an package in [PyPI/pandas-wizard](https://pypi.org/project/pandas-wizard/).
 
-Moveing from `alpha` release to `stable` release. The following features are updated for the release as below:
+Moving from `alpha` release to `stable` release. The following features are updated for the release as below:
 
   * 🎉 Added a wrapper function [`timeit`](./pandaswizard/wrappers.py) to print executed time for a function
     that returns a pandas dataframe object.
@@ -62,7 +66,7 @@ Moveing from `alpha` release to `stable` release. The following features are upd
   * 🎉 Introduced a new module [`window`](./pandaswizard/window.py) which acts as a wrapper to the
     [pd.DataFrame.rolling()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rolling.html) function.
 
-### Version 1.1.0a0 | Release Date: 21.04.2024
+#### Version 1.1.0a0 | Release Date: 21.04.2024
 
 Moving from `development` release to `alpha` testing release, the version brings the additional new features and/or enhancements for
 the module:
@@ -73,7 +77,7 @@ the module:
   * 🎉📃 Basic code documentation is now available, hosted using
     [readthedocs/pandas-wizard](https://pandas-wizard.readthedocs.io/en/latest/index.html)
 
-### Version 1.1.0.dev0 | Release Date: 20.04.2024
+#### Version 1.1.0.dev0 | Release Date: 20.04.2024
 
 Major enhancement of the preview built, also created an favicon and logo for the project. The logo is modified from the original
 pandas logo.

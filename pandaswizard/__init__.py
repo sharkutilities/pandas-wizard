@@ -17,7 +17,7 @@ of the module is divided into the following sections:
 
 # ? package follows https://peps.python.org/pep-0440/
 # ? https://python-semver.readthedocs.io/en/latest/advanced/convert-pypi-to-semver.html
-__version__ = "1.1.0a0"
+__version__ = "1.1.0"
 
 # init-time options registrations
 from pandaswizard.aggregate import (
