@@ -13,7 +13,8 @@ want to average out based on "weighted moving average" function.
 import numpy as np
 import pandas as pd
 
-from typing import Union, Callable
+from tqdm import tqdm as TQ
+from typing import Union, Callable, Iterable
 
 def _rolling(series : pd.Series, window : Union[int, Callable], **kwargs):
     """
@@ -109,3 +110,56 @@ def rolling(
         method(array) if array.shape[0] == window
         else np.nan for array in rolling_
     ]
+
+
+def groupApply(
+        frame : pd.DataFrame,
+        groupby : Iterable[str],
+        feature : str,
+        function : Callable,
+        outfeature : str = "values"
+    ):
+    """
+    A Function to Dynamically Apply any Arbitary Function on a Group
+
+    Pandas provide the windowing function :attr:`.groupby()` that can
+    be used to calculate/apply any function. The function creates an
+    wrapper method over the :attr:`DataFrameGroupBy` object and
+    dynamically applies any arbitary function :attr:`function` which
+    is user defined. Some example function is available like detection
+    of outliers at a group level.
+
+    :type  frame: object
+    :param frame: The data frame object where all the values are to
+        to be calculated. This must be a :attr:`pd.DataFrame` object.
+
+    :type  groupby: list
+    :param groupby: The features used for grouping the data frame
+        object like :attr:`frame.groupby(groupby)` method.
+
+    :type  feature: str
+    :param feature: Currently only a univariate series is supported,
+        the feature is selected from the selected rows and the
+        external function is applied on the same.
+
+    :type  function: object
+    :param function: A callable object where the values are passed
+        like :attr:`function(frame[feature].values)` which computes
+        and return an iterable object of the same shape as that of
+        the data frame grouped object. For example function, check
+        :attr:`pdw.functions.statistics` module.
+
+    :type  outfeature: str
+    :param outfeature: Output feature/column name of the dataframe.
+        Defaults to :attr:`values`.
+    """
+    groups = frame.copy().groupby(groupby) # DataFrameGroupBy object
+
+    retvals = []
+    for group in TQ(groups, desc = "groupApply()"):
+        _, frame_ = group # keys, dataframe object
+
+        retvals += list(function(frame_[feature].values))
+
+    frame[outfeature] = retvals
+    return frame
