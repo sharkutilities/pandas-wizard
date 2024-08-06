@@ -10,3 +10,4 @@ apply the same over a pandas dataframe object.
 """
 
 from pandaswizard.functions.collate import * # noqa: F401, F403 # pyright: ignore[reportMissingImports]
+from pandaswizard.functions.statistics import * # noqa: F401, F403 # pyright: ignore[reportMissingImports]
