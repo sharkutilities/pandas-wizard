@@ -46,7 +46,14 @@ changelogs are as follows:
   * ⚙️ - **Code Efficiency** : an existing feature now may not require as much computation or memory.
   * 💣 - **Code Refactoring** : a breakable change often associated with `major` version bump.
 
-### Version 1.1.0 | Stable Release, Release Date - 29-07-2024
+### Version 1.2.0 | WIP
+
+The version brings various bug fixes, improvements and new features on top of the previous stable version release `v1.1.0` as below:
+
+  * 🎉 Introducing [*stattistics*](./pandaswizard/functions/statistics.py) which can be used to calculate outliers on a
+    dataframe window object using [**`groupApply()`**](./pandaswizard/window.py) method.
+
+#### Version 1.1.0 | Stable Release, Release Date - 29-07-2024
 
 We're pleased to annouce the first major release and preview-built for **`pandaswizard`**! This version mainly focuses on enduser
 feedback and basic setup for the module.

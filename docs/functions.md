@@ -2,8 +2,17 @@
 
 <div align = "justify">
 
+## Collation Functionalities
+
 ```{eval-rst}
 .. automodule:: pandaswizard.functions.collate
+  :members:
+```
+
+## Statistical Functionalities
+
+```{eval-rst}
+.. automodule:: pandaswizard.functions.statistics
   :members:
 ```
 
