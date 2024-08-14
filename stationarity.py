@@ -5,6 +5,7 @@ Stationarity Checking for Time Series Data
 
 A functional approach to check stationarity using different models
 and the function attrbutes are as defined below.
+(`More Information <http://ds-gringotts.readthedocs.io/>`_)
 """
 
 from statsmodels.tsa.stattools import kpss # kpss test
