@@ -3,8 +3,8 @@
 """
 Stationarity Checking for Time Series Data
 
-@author:  Debmalya Pramanik
-@version: v0.0.1
+A functional approach to check stationarity using different models
+and the function attrbutes are as defined below.
 """
 
 from statsmodels.tsa.stattools import kpss # kpss test
