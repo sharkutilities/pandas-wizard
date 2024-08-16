@@ -11,6 +11,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/sharkutilities/pandas-wizard?style=plastic)](https://github.com/sharkutilities/pandas-wizard/stargazers)
 [![LICENSE File](https://img.shields.io/github/license/sharkutilities/pandas-wizard?style=plastic)](https://github.com/sharkutilities/pandas-wizard/blob/master/LICENSE)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/pandas-wizard?style=plastic)](https://pypistats.org/packages/pandas-wizard)
+[![PyPI Latest Release](https://img.shields.io/pypi/v/pandas-wizard.svg?style=plastic)](https://pypi.org/project/pandas-wizard/)
 
 [![GuardRails badge](https://api.guardrails.io/v2/badges/252923?token=3d0607cb31a1f48e15354fb326b65a0266e6f5ad60cd4f21f544ec8cb19dc6fb)](https://dashboard.guardrails.io/gh/sharkutilities/repos/252923)
 
