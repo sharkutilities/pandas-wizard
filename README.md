@@ -10,6 +10,9 @@
 [![GitHub Forks](https://img.shields.io/github/forks/sharkutilities/pandas-wizard?style=plastic)](https://github.com/sharkutilities/pandas-wizard/network)
 [![GitHub Stars](https://img.shields.io/github/stars/sharkutilities/pandas-wizard?style=plastic)](https://github.com/sharkutilities/pandas-wizard/stargazers)
 [![LICENSE File](https://img.shields.io/github/license/sharkutilities/pandas-wizard?style=plastic)](https://github.com/sharkutilities/pandas-wizard/blob/master/LICENSE)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/pandas-wizard)](https://pypistats.org/packages/pandas-wizard)
+
+
 
 </div>
 
