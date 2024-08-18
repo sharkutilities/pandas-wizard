@@ -1,5 +1,5 @@
 <h1 align = "center">
-  <img alt = "favicon" src = "favicon.png" height = 250px><br>
+  <img alt = "favicon" src = "https://raw.githubusercontent.com/sharkutilities/pandas-wizard/master/favicon.png" height = 250px><br>
   pandas-wizard
 </h1>
 
