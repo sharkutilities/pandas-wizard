@@ -37,14 +37,18 @@ this [link](https://python-semver.readthedocs.io/en/latest/advanced/convert-pypi
 ## Release Note(s)
 
 The release notes are documented, the list of changes to each different release are documented. The `major.minor` patch are indicated
-under `h3` tags, while the `micro` and "version identifiers" are listed under `h4` and subsequent headlines. The legend for
-changelogs are as follows:
+under `h3` tags, while the `micro` and "version identifiers" are listed under `h4` and subsequent headlines.
+
+<details>
+<summary>Click to open <code>Legend Guidelines</code> for the Project CHANGELOG.md File</summary>
 
   * 🎉 - **Major Feature** : something big that was not available before.
   * ✨ - **Feature Enhancement** : a miscellaneous minor improvement of an existing feature.
   * 🛠️ - **Patch/Fix** : something that previously didn’t work as documented – or according to reasonable expectations – should now work.
   * ⚙️ - **Code Efficiency** : an existing feature now may not require as much computation or memory.
   * 💣 - **Code Refactoring** : a breakable change often associated with `major` version bump.
+
+</details>
 
 ### Version 1.2.0 | WIP
 
@@ -53,7 +57,7 @@ The version brings various bug fixes, improvements and new features on top of th
   * 🎉 Introducing [*stattistics*](./pandaswizard/functions/statistics.py) which can be used to calculate outliers on a
     dataframe window object using [**`groupApply()`**](./pandaswizard/window.py) method.
 
-#### Version 1.1.0 | Stable Release, Release Date - 29-07-2024
+### Version 1.1.0 | Stable Release, Release Date - 29-07-2024
 
 We're pleased to annouce the first major release and preview-built for **`pandaswizard`**! This version mainly focuses on enduser
 feedback and basic setup for the module.
