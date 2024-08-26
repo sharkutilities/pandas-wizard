@@ -7,8 +7,9 @@ A set of simplistic time series models developed on top of `pandas`
 and `numpy` functionalities to provide quick analysis and develop a
 base line for a univariate time series data.
 
-@author:  Debmalya Pramanik
-@version: v0.0.1
+.. caution::
+    This will be a part of pandaswizard/functions module instead
+    `GH/#29 <https://github.com/sharkutilities/pandas-wizard/issues/29>`_.
 """
 
 import warnings
