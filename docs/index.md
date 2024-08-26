@@ -61,6 +61,7 @@ The above function calculates the 50th percentile, i.e., the median of the featu
 aggregate.md
 wrappers.md
 functions.md
+timeseries.md
 ```
 
 ---
