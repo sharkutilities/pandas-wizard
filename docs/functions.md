@@ -9,11 +9,4 @@
   :members:
 ```
 
-## Statistical Functionalities
-
-```{eval-rst}
-.. automodule:: pandaswizard.functions.statistics
-  :members:
-```
-
 </div>
