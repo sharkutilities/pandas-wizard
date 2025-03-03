@@ -55,4 +55,4 @@ def weightedMA(initial : float, rate : Union[float, Callable], length : int, dec
         )
 
     factors = np.array(factors)
-    return factors[::-1] if decay else factors
+    return factors[::-1] if not decay else factors
