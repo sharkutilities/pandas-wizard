@@ -118,7 +118,7 @@ def groupApply(
         feature : str,
         function : Callable,
         outfeature : str = "values"
-    ):
+    ) -> pd.DataFrame:
     """
     A Function to Dynamically Apply any Arbitary Function on a Group
 
@@ -153,13 +153,15 @@ def groupApply(
     :param outfeature: Output feature/column name of the dataframe.
         Defaults to :attr:`values`.
     """
+
+    output = { key : [] for key in groupby + [outfeature] }
     groups = frame.copy().groupby(groupby) # DataFrameGroupBy object
 
-    retvals = []
-    for group in TQ(groups, desc = "groupApply()"):
-        _, frame_ = group # keys, dataframe object
+    for groups in TQ(groups, desc = "Applying Function to GroupBy"):
+        keys, group = groups
+        metric = function(group[feature].values)
 
-        retvals += list(function(frame_[feature].values))
+        for key, value in zip(output.keys(), list(keys) + [metric]):
+            output[key].append(value)
 
-    frame[outfeature] = retvals
-    return frame
+    return pd.DataFrame(output)
