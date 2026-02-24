@@ -27,5 +27,4 @@ from pandaswizard.aggregate import (
 
 from pandaswizard import window
 from pandaswizard import wrappers
-from pandaswizard import functions
 from pandaswizard import timeseries
