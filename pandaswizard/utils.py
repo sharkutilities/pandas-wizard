@@ -90,8 +90,10 @@ def jsonify(
 
         if returnscalar and len(values) == 1:
             values = values[0] # only the first index, one value
-        else:
+        elif returnscalar and len(values) > 1:
             raise ValueError("Return array has more than one value.")
+        else:
+            pass
 
         key = tuple(row[dikey]) # pk; in strict order
         if (key in outdict.keys()) and onduplicate == "raise":
